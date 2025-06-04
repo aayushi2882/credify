@@ -159,28 +159,7 @@ def check_eligibility():
 
 
 
-@app.route('/estimate-income', methods=['POST'])
-def estimate_income():
-    data = request.get_json()
 
-    upi_txn_count = data.get('upiTransactions', 0)
-    data_usage_gb = data.get('dataUsageGB', 0)
-    location = data.get('location', 'urban').lower()
-
-    # Simple scoring logic (just for simulation)
-    upi_score = min(upi_txn_count, 50) * 100
-    data_score = min(data_usage_gb, 100) * 50
-
-    # Location multiplier
-    location_multiplier = 1.2 if location == 'urban' else 1.0
-
-    # Estimated income calculation
-    estimated_income = (upi_score + data_score) * location_multiplier
-
-    return jsonify({
-        "estimatedIncome": round(estimated_income, 2),
-        "message": f"Estimated monthly income based on behavior is ₹{round(estimated_income, 2)}"
-    })
 
 
 

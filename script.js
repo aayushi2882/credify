@@ -274,3 +274,4 @@ function checkEligibility() {
         console.error('Error:', error);
     });
 }
+
