@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loan Types - Credify</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #f9fafb;
+      color: #333;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      color: #5a4634;
+      font-weight: 700;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+    }
+
+    .loan-type-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.07);
+      padding: 24px 32px;
+      margin-bottom: 24px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+
+    .loan-type-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    }
+
+    .loan-title {
+      color: #c78e46;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .loan-description {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .loan-details {
+      font-size: 0.9rem;
+      color: #777;
+      font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .loan-type-card {
+        padding: 18px 24px;
+      }
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Loan Types Available</h1>
+
+    <div class="loan-type-card">
+      <div class="loan-title">Microfinance Loans</div>
+      <div class="loan-description">
+        Small loans tailored for rural and gig workers to help with personal and business expenses.
+      </div>
+      <div class="loan-details">Loan Amount: ₹5,000 - ₹100,000 | Interest Rate: 12% - 18% p.a.</div>
+    </div>
+
+    <div class="loan-type-card">
+      <div class="loan-title">Small Business Loans</div>
+      <div class="loan-description">
+        Loans designed to support small business owners to expand operations or manage cash flow.
+      </div>
+      <div class="loan-details">Loan Amount: ₹50,000 - ₹2,000,000 | Interest Rate: 10% - 16% p.a.</div>
+    </div>
+
+    <div class="loan-type-card">
+      <div class="loan-title">Gig Worker Loans</div>
+      <div class="loan-description">
+        Flexible loans for gig economy workers with short-term repayment options and easy documentation.
+      </div>
+      <div class="loan-details">Loan Amount: ₹10,000 - ₹250,000 | Interest Rate: 14% - 20% p.a.</div>
+    </div>
+
+    <div class="loan-type-card">
+      <div class="loan-title">Emergency Loans</div>
+      <div class="loan-description">
+        Quick approval loans for urgent personal needs, often with minimal paperwork.
+      </div>
+      <div class="loan-details">Loan Amount: ₹5,000 - ₹50,000 | Interest Rate: 18% - 24% p.a.</div>
+    </div>
+  </div>
+</body>
+</html>

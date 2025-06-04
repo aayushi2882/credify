@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Banking Landing Page</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<!--name of app-->
+<body>
+  <header class="navbar">
+    <h1 style="font-weight: 500;">
+  <i class="fa-solid fa-money-check" style="margin-right: 8px;"></i> Credify
+</h1>
+
+<!--navigation bar-->
+    <nav> 
+      <ul class="nav-links">
+        <li><a href="eligibility.html">Eligibility</a></li>
+        <li><a href="loan-types.html">Loan Types</a></li>
+        <li><a href="credit-tips.html">Credit Tips</a></li>
+      </ul>
+    </nav>
+    
+    
+<!--search bar-->
+  <div class="search-wrapper">
+    <input type="text" id="searchInput" placeholder="Search..." />
+    <ul id="searchResults" class="results"></ul>
+  </div>
+</nav>
+
+<!--get started button-->
+    <button class="cta-btn" id="getStartedBtn">Get Started</button>
+    <div id="getStartedModal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <h2 id="modalTitle">Get Started - Additional Details</h2>
+      <form id="getStartedForm">
+        <label for="monthlyIncomeEstimate">Estimated Monthly Income (₹):</label>
+        <input type="number" id="monthlyIncomeEstimate" name="monthlyIncomeEstimate" min="0" required />
+        <label for="repaymentCapacity">Monthly Repayment Capability (₹):</label>
+        <input type="number" id="repaymentCapacity" name="repaymentCapacity" min="0" required />
+        <label for="selfEmployedYears">Years Self-Employed:</label>
+        <input type="number" id="selfEmployedYears" name="selfEmployedYears" min="0" required />
+        <div class="modal-buttons">
+          <button type="submit" class="btn-submit">Continue</button>
+          <button type="button" class="btn-cancel" id="modalCancelBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  </header>
+
+<!--hero-->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="date">◎ / 22</p>
+      <h1> Credit access<br>Made For <span class="chip">⛓</span><br>Every Dreamer</h1>
+      <p class="description">
+       We are here for you. We create business with you in mind. We make things easier.
+      </p>
+      <div class="users">
+        <img src="https://i.pravatar.cc/40?img=1" alt="User" />
+        <img src="https://i.pravatar.cc/40?img=2" alt="User" />
+        <img src="https://i.pravatar.cc/40?img=3" alt="User" />
+        <span>1.3M+ Active users across the world</span>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="image1.jpg" alt="Hand with card" />
+    </div>
+  </section>
+
+  <!--about-->
+<section class="about-section">
+  <div class="about-container">
+    <h2 class="about-heading">Why Credify?</h2>
+    <p class="about-para">
+      At <span>Credify</span>, we believe credit access should be <strong>simple</strong>, <strong>transparent</strong>, and <strong>empowering</strong>.
+      Our platform helps dreamers turn goals into reality — whether you're buying a home, growing a business, or building financial health.
+    </p>
+    <p class="about-para">
+      With intuitive tools, education, and personalized insights, <span>Credify</span> makes finance easier to understand and act on. 
+      Join <strong>1.3M+ users</strong> who trust us to guide their journey.
+    </p>
+  </div>
+</section>
+
+<!--features-->
+<section class="zigzag-features">
+  <div class="zigzag-item">
+    <div class="zigzag-icon">🔁</div>
+    <div class="zigzag-text">
+      <h3>Easy Credit Approval</h3>
+      <p>Fast and seamless credit application tailored to your needs.</p>
+    </div>
+  </div>
+
+  <div class="zigzag-item reverse">
+    <div class="zigzag-icon">📱</div>
+    <div class="zigzag-text">
+      <h3>Mobile App Available</h3>
+      <p>Stay connected to your finances with our user-friendly app.</p>
+    </div>
+  </div>
+
+  <div class="zigzag-item">
+    <div class="zigzag-icon">🔍</div>
+    <div class="zigzag-text">
+      <h3>Transparent Terms</h3>
+      <p>No hidden fees, just simple and clear policies you can trust.</p>
+    </div>
+  </div>
+
+  <div class="zigzag-item reverse">
+    <div class="zigzag-icon">💸</div>
+    <div class="zigzag-text">
+      <h3>Low-Interest Rates</h3>
+      <p>Affordable credit options with competitive interest rates.</p>
+    </div>
+  </div>
+
+  <div class="zigzag-item">
+    <div class="zigzag-icon">🕒</div>
+    <div class="zigzag-text">
+      <h3>24/7 Customer Support</h3>
+      <p>Our team is always available to assist you anytime, anywhere.</p>
+    </div>
+  </div>
+
+  <div class="zigzag-item reverse">
+    <div class="zigzag-icon">🔐</div>
+    <div class="zigzag-text">
+      <h3>Bank-Level Security</h3>
+      <p>Your data is encrypted and protected with top-grade security protocols.</p>
+    </div>
+  </div>
+</section>
+
+<!--trust and security-->
+<section class="trust-security">
+  <div class="container">
+    <h2>🔒 Trusted. Secure. Transparent.</h2>
+    <p class="sub-text">We’re committed to keeping your data safe and your transactions secure.</p>
+    
+    <div class="trust-grid">
+      <div class="trust-card">
+        <span class="icon">🔐</span>
+        <h3>Bank-level Security</h3>
+        <p>Our infrastructure is built with the same standards used by top banks and institutions.</p>
+      </div>
+
+      <div class="trust-card">
+        <span class="icon">🛡</span>
+        <h3>Data Encryption</h3>
+        <p>All your information is end-to-end encrypted and never shared without consent.</p>
+      </div>
+
+      <div class="trust-card">
+        <span class="icon">✅</span>
+        <h3>ISO & SSL Certified</h3>
+        <p>We’re ISO 27001 and SSL certified to give you complete peace of mind.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!--footer panel-1-->
+<div class="foot-panel2">
+  <div class="footer-column">
+    <h3>Get to Know Us</h3>
+    <a href="about-cerdify.html">About Credify</a>
+    <a href="careers.html">Careers</a>
+    <a href="press-relaeases.html">Press Releases</a>
+    <a href="credify-labs.html">Credify Labs</a>
+  </div>
+
+  <div class="footer-column">
+    <h3>Connect with Us</h3>
+    <a href="https://www.linkedin.com/in/aayushi-mishra-6ab223297/">LinkedIn</a>
+    <a href="mailto:aayushimishra237@gmail.com">E-mail</a>
+    <a href="https://www.instagram.com/aayushi_mishrraa/">Instagram</a>
+  </div>
+
+  <div class="footer-column">
+    <h3>Opportunities</h3>
+    <a href="partner-with-us.html">Partner with Us</a>
+    <a href="join-our-program.html">Join Our Program</a>
+    <a href="refer-a-friend.html">Refer a Friend</a>
+    
+  </div>
+
+  <!--footer panel-2-->
+  <div class="footer-column">
+    <h3>Support</h3>
+    <a href="#">Your Account</a>
+    <a href="#">FAQs</a>
+    <a href="#">Help Center</a>
+    <a href="#">Contact Us</a>
+  </div>
+</div>
+ <div class="legal-links">
+    <ul>
+      <li><a href="/terms-and-conditions.html">Terms & Conditions</a></li>
+      <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+      <li><a href="/cookies-policy.html">Cookies Policy</a></li>
+      <li><a href="/disclaimer.html">Disclaimer</a></li>
+    </ul>
+  </div>
+ 
+
+<!--ribbon-->
+  <div class="ribbon">★ DIGITAL BANKING ★ DIGITAL BANKING ★ DIGITAL BANKING ★</div>
+</body>
+ <script src="script.js"></script>
+
+</html>

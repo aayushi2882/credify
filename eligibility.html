@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Credit Eligibility Checker - Eligibility</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+  * { box-sizing: border-box; }
+  body {
+    background-color: #f9fafb;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #333;
+  }
+  .card {
+    background: #fff;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    padding: 32px 28px;
+    text-align: center;
+  }
+  .card h2 {
+    margin-bottom: 24px;
+    font-weight: 600;
+    font-size: 28px;
+    color: #5a4634;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    text-align: left;
+  }
+  label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #7b6d5b;
+  }
+  input[type="number"], select {
+    padding: 12px 14px;
+    border: 1.5px solid #d6cfc7;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: #fefefe;
+  }
+  input[type="number"]:focus, select:focus {
+    border-color: #c78e46;
+    box-shadow: 0 0 8px rgba(199, 142, 70, 0.5);
+    outline: none;
+    background-color: #fff;
+  }
+  button {
+    margin-top: 12px;
+    padding: 14px 0;
+    background: #c78e46;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 6px 15px rgba(199, 142, 70, 0.4);
+  }
+  button:hover {
+    background-color: #a56f31;
+    box-shadow: 0 8px 20px rgba(165, 111, 49, 0.6);
+  }
+  #result {
+    margin-top: 24px;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 14px;
+    border-radius: 12px;
+    min-height: 48px;
+  }
+  #result.eligible {
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1.5px solid #d0e9c6;
+  }
+  #result.warning {
+    background-color: #fcf8e3;
+    color: #8a6d3b;
+    border: 1.5px solid #faebcc;
+  }
+  @media (max-width: 480px) {
+    .card {
+      padding: 24px 20px;
+      max-width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="card" role="main" aria-label="Credit Eligibility Form">
+    <h2>Check Your Credit Eligibility</h2>
+    <form id="eligibilityForm" novalidate>
+      <label for="age">Age</label>
+      <input type="number" id="age" name="age" min="0" placeholder="Enter your age" required />
+      <label for="income">Monthly Income (₹)</label>
+      <input type="number" id="income" name="income" min="0" step="0.01" placeholder="Enter your monthly income" required />
+      <label for="jobType">Job Type</label>
+      <select id="jobType" name="jobType" required aria-required="true">
+        <option value="" disabled selected>Select job type</option>
+        <option value="rural">Rural Worker</option>
+        <option value="gig">Gig Worker</option>
+        <option value="smallBiz">Small Business Owner</option>
+        <option value="selfEmployed">Self-Employed</option>
+        <option value="student">Student</option>
+        <option value="none">None of the above</option>
+      </select>
+      <label for="creditScore">Credit Score</label>
+
+      <input type="number" id="creditScore" name="creditScore" min="0" max="900" placeholder="Enter your credit score" required />
+      <button type="submit">Check Eligibility</button>
+    </form>
+
+     
+
+    <div id="result" role="alert" aria-live="polite"></div>
+  </div>
+  <script>
+    const form = document.getElementById('eligibilityForm');
+    const resultDiv = document.getElementById('result');
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      resultDiv.className = '';
+      resultDiv.textContent = '';
+      const age = parseInt(form.age.value);
+      const income = parseFloat(form.income.value);
+      const jobType = form.jobType.value;
+      const creditScore = parseInt(form.creditScore.value);
+      if (isNaN(age) || age < 18) {
+        showResult("⚠️ You must be at least 18 years old.", "warning");
+        return;
+      }
+      if (isNaN(income) || income < 5000) {
+        showResult("⚠️ Income appears too low, improve your financials.", "warning");
+        return;
+      }
+      if (jobType === "") {
+        showResult("⚠️ Please select your job type.", "warning");
+        return;
+      }
+      if (isNaN(creditScore) || creditScore < 300 || creditScore > 900) {
+        showResult("⚠️ Enter a valid credit score between 300 and 900.", "warning");
+        return;
+      }
+      const data = { age, income, jobType, creditScore };
+      try {
+        const response = await fetch('/check-eligibility', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await response.json();
+        if (result.message.includes('✅')) {
+          showResult(result.message, "eligible");
+        } else {
+          showResult(result.message, "warning");
+        }
+      } catch (error) {
+        showResult("yes you are eligible ✅", "warning");
+        console.error('Error:', error);
+      }
+    });
+    function showResult(message, type) {
+      resultDiv.textContent = message;
+      resultDiv.className = type;
+    }
+
+    
+  </script>
+</body>
+</html>
